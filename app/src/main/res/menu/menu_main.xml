@@ -1,0 +1,35 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.azwraith.apps.shubhamjewelers.MainActivity">
+    <item
+        android:id="@+id/Bottombaritemone"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="News Feeds"
+         />
+    <item
+        android:id="@+id/Bottombaritemtwo"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_textsms_black_24dp"
+        android:title="Chats"
+        />
+    <item
+        android:id="@+id/Bottombaritemthree"
+        android:orderInCategory="100"
+        android:title="Class Schedules"
+        android:icon="@drawable/ic_schedule_black_24dp"
+        />
+    <item
+        android:id="@+id/Bottombaritemfour"
+        android:orderInCategory="100"
+        android:title="Notes"
+        android:icon="@android:drawable/ic_menu_edit"
+        />
+    <item
+        android:id="@+id/Bottombaritemfive"
+        android:orderInCategory="100"
+        android:title="Calender"
+        android:icon="@android:drawable/ic_menu_my_calendar"
+        />
+</menu>

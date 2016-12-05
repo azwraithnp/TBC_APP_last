@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    >
+    <LinearLayout
+        android:id="@+id/mainView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="user1"
+            android:textStyle="italic"
+            android:textColor="#A9A9A9"
+            android:id="@+id/username"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:textSize="12sp"/>
+
+
+        <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        card_view:cardBackgroundColor="#C5CAE9"
+        card_view:cardCornerRadius="10dp"
+        android:id="@+id/my_message"
+        >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="This is a chat message! which i have put in the cardview which now looks great ha ha!!"
+                android:textColor="#000"
+                android:id="@+id/chatMessage"
+                android:layout_margin="10dp"
+                android:textSize="16sp"
+                android:paddingLeft="15dp"
+                />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="date"
+            android:textColor="#000"
+            android:id="@+id/date"
+            android:textSize="9sp"
+            android:textStyle="italic"
+            android:layout_marginLeft="10sp"
+            />
+    </android.support.v7.widget.CardView>
+    </LinearLayout>
+</RelativeLayout>
