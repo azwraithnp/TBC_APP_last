@@ -35,7 +35,7 @@ public class NewsFeedsActivity extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.newsfeeds_activity,container,false);
         Firebase.setAndroidContext(getActivity());
-        Firebase ref = new Firebase(Config.FIREBASE_URL_bba);
+        Firebase ref = new Firebase(Config.FIREBASE_URL_bsc);
 
         recycleView = (RecyclerView)v.findViewById(R.id.recycler_view);
         cAdapter = new NewsAdapter(list);

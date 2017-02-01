@@ -45,10 +45,10 @@ public class MainActivity extends ActionBarActivity {
 
             }
         });
-        btmbar.mapColorForTab(0,"#283593");
-        btmbar.mapColorForTab(1,"#1A237E");
-        btmbar.mapColorForTab(2,"#616161");
-        btmbar.mapColorForTab(3,"#5D4037");
+        btmbar.mapColorForTab(0,"#2980b9");
+        btmbar.mapColorForTab(1,"#3498db");
+        btmbar.mapColorForTab(2,"#48647c");
+        btmbar.mapColorForTab(3,"#e3a712");
         btmbar.mapColorForTab(4,"#303F9F");
 
         BottomBarBadge unread;

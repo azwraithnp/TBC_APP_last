@@ -28,6 +28,9 @@ dependencies {
     compile 'com.firebase:firebase-client-android:2.4.0'
     compile 'com.android.support:recyclerview-v7:24.0.0'
     compile 'com.github.npanigrahy:Custom-Calendar-View:v1.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
+    compile 'com.google.firebase:firebase-storage:9.4.0'
 }
 
 //apply plugin: 'com.google.gms.google-services'

@@ -4,7 +4,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -13,16 +16,20 @@ import java.util.List;
  */
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
     private List<NewsMessage> newsMessages;
+    View v;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView username, message,date;
-
+        ImageView img;
+        String downloadUrl="http://www1.uwe.ac.uk/images/logo_the_british_college_cyan244.jpg";
         public MyViewHolder(View view)
         {
             super(view);
             username = (TextView) view.findViewById(R.id.userid);
             message = (TextView) view.findViewById(R.id.newsMessage);
             date = (TextView) view.findViewById(R.id.date);
+            img = (ImageView) view.findViewById(R.id.mDownloadImageView);
+            //Picasso.with(view.getContext()).load(downloadUrl.toString()).into(img);
         }
     }
 
@@ -45,6 +52,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
         holder.username.setText(chat.getUsername());
         holder.message.setText(chat.getMessage());
         holder.date.setText(chat.getDate());
+        Picasso.with(v.getContext()).load(chat.getUrl().toString()).into(holder.img);
     }
 
     @Override

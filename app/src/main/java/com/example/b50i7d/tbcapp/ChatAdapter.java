@@ -63,9 +63,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder>{
         String imgSett = sp.getString(user_name, "user_name");
 
         ChatMessage chat = chatMessages.get(position);
-        holder.username.setText(chat.getUsername());
-        holder.message.setText(chat.getMessage());
-        holder.date.setText(chat.getDate());
         if(imgSett.equals(chat.getUsername())){
             holder.cardView.setCardBackgroundColor(mContext.getResources().getColor(R.color.light_blue));
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)mLayout.getLayoutParams();
@@ -73,12 +70,16 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder>{
             mLayout.setLayoutParams(params);
 
         }
-        else{
+        else if(!imgSett.equals(chat.getUsername())){
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)mLayout.getLayoutParams();
             params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
             mLayout.setLayoutParams(params);
             holder.cardView.setCardBackgroundColor(mContext.getResources().getColor(R.color.light_grey));
         }
+        holder.username.setText(chat.getUsername());
+        holder.message.setText(chat.getMessage());
+        holder.date.setText(chat.getDate());
+
 
     }
 

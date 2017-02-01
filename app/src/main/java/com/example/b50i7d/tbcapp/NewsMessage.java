@@ -8,6 +8,7 @@ public class NewsMessage {
     private String message;
     private String date;
     private String courses;
+    private String url;
 
     public NewsMessage()
     {
@@ -20,6 +21,14 @@ public class NewsMessage {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getDate() {
