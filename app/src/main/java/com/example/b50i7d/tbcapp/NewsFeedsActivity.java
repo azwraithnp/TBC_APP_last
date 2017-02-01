@@ -38,7 +38,7 @@ public class NewsFeedsActivity extends Fragment {
         Firebase ref = new Firebase(Config.FIREBASE_URL_bsc);
 
         recycleView = (RecyclerView)v.findViewById(R.id.recycler_view);
-        cAdapter = new NewsAdapter(list);
+        cAdapter = new NewsAdapter(list, getActivity());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recycleView.setLayoutManager(mLayoutManager);
         recycleView.setItemAnimator(new DefaultItemAnimator());
