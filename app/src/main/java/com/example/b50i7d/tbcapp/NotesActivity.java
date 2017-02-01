@@ -11,10 +11,11 @@ import android.view.ViewGroup;
  * Created by B50i7D on 11/28/2016.
  */
 public class NotesActivity extends Fragment {
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.notes_activity,container,false);
+        View v = inflater.inflate(R.layout.notes_activity, container, false);
 
         return v;
     }

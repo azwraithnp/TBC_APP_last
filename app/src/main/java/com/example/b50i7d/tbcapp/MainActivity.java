@@ -35,7 +35,7 @@ public class MainActivity extends ActionBarActivity {
                     getSupportFragmentManager().beginTransaction().replace(R.id.frame,f).commit();
                 }
                 if(menuItemId ==R.id.Bottombaritemfive){
-                    CalenderActivity f = new CalenderActivity();
+                    CalendarActivity f = new CalendarActivity();
                     getSupportFragmentManager().beginTransaction().replace(R.id.frame,f).commit();
                 }
             }
