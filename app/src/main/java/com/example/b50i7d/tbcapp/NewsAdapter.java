@@ -16,7 +16,8 @@ import java.util.List;
  */
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
     private List<NewsMessage> newsMessages;
-
+    private Context context;
+    
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView username, message,date;
@@ -29,13 +30,14 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
             message = (TextView) view.findViewById(R.id.newsMessage);
             date = (TextView) view.findViewById(R.id.date);
             img = (ImageView) view.findViewById(R.id.mDownloadImageView);
-            //Picasso.with(view.getContext()).load(downloadUrl.toString()).into(img);
+            Picasso.with(context).load(downloadUrl.toString()).into(img);
         }
     }
 
-    public NewsAdapter(List<NewsMessage> chatMessages)
+    public NewsAdapter(List<NewsMessage> chatMessages, Context contxt)
     {
         this.newsMessages = chatMessages;
+        this.context = contxt;
     }
 
     @Override
