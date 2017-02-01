@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
     private List<NewsMessage> newsMessages;
-    View v;
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView username, message,date;
@@ -52,7 +52,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
         holder.username.setText(chat.getUsername());
         holder.message.setText(chat.getMessage());
         holder.date.setText(chat.getDate());
-        Picasso.with(v.getContext()).load(chat.getUrl().toString()).into(holder.img);
+        Picasso.with().load(chat.getUrl().toString()).into(holder.img);
     }
 
     @Override
