@@ -1,5 +1,6 @@
 package com.example.b50i7d.tbcapp;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,7 +55,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
         holder.username.setText(chat.getUsername());
         holder.message.setText(chat.getMessage());
         holder.date.setText(chat.getDate());
-        Picasso.with().load(chat.getUrl().toString()).into(holder.img);
+        Picasso.with(context).load(chat.getUrl().toString()).into(holder.img);
     }
 
     @Override

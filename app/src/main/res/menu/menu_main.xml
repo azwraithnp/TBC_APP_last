@@ -6,7 +6,7 @@
         android:id="@+id/Bottombaritemone"
         android:orderInCategory="100"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="News Feeds"
+        android:title="Settings"
          />
     <item
         android:id="@+id/Bottombaritemtwo"
