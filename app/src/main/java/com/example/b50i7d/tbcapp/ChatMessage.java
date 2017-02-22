@@ -9,6 +9,7 @@ public class ChatMessage {
     private String date;
     private String courses;
     private String url;
+    private String img;
 
     public ChatMessage()
     {
@@ -48,5 +49,13 @@ public class ChatMessage {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }

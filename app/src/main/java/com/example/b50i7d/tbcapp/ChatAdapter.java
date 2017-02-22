@@ -2,16 +2,22 @@ package com.example.b50i7d.tbcapp;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.preference.PreferenceManager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -24,16 +30,18 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder>{
     SharedPreferences.Editor editor;
     public static final String user_name = "user_name";
     LinearLayout mLayout;
+    Bitmap bitmap;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView username, message,date;
         public CardView cardView;
+        public ImageView imgV;
 
 
         public MyViewHolder(View view)
         {
             super(view);
-
+            imgV = (ImageView) view.findViewById(R.id.imageView);
             username = (TextView) view.findViewById(R.id.username);
             message = (TextView) view.findViewById(R.id.chatMessage);
             date = (TextView) view.findViewById(R.id.date);
@@ -46,6 +54,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder>{
     {
         this.chatMessages = chatMessages;
         this.mContext  =  context;
+        //notifyDataSetChanged();
     }
 
     @Override
@@ -55,6 +64,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder>{
 
         return new MyViewHolder(itemView);
     }
+
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
@@ -79,7 +89,13 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder>{
         holder.username.setText(chat.getUsername());
         holder.message.setText(chat.getMessage());
         holder.date.setText(chat.getDate());
+        try{
+            InputStream stream = new ByteArrayInputStream(Base64.decode(chat.getImg().getBytes(), Base64.DEFAULT));
+            bitmap = BitmapFactory.decodeStream(stream);
+            holder.imgV.setImageBitmap(bitmap);
+        }catch(Exception e) {
 
+        }
 
     }
 

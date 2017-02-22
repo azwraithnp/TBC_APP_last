@@ -2,7 +2,6 @@ package com.example.b50i7d.tbcapp;
 
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.media.audiofx.BassBoost;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.widget.DrawerLayout;
@@ -144,8 +143,8 @@ public class MainActivity extends ActionBarActivity {
 
         switch (item.getItemId())
         {
-            case R.id.Bottombaritemone:
-                ChatActivity f = new ChatActivity();
+            case R.id.help:
+                NotesFragmet.SettingsFragment f = new NotesFragmet.SettingsFragment();
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
                 return true;
             default:
@@ -158,7 +157,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
+        inflater.inflate(R.menu.toolbarmenu, menu);
         return true;
     }
 
@@ -168,14 +167,13 @@ public class MainActivity extends ActionBarActivity {
             switch (position) {
                 case 0:
                     //TODO: Insert the proper classes
-                    SettingsFragment f = new SettingsFragment();
+                    NotesFragmet.SettingsFragment f = new NotesFragmet.SettingsFragment();
                     getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
-
                     break;
-
                 case 4:
                     startActivity(new Intent(MainActivity.this, MainActivity.class));
                     break;
+
             }
             setTitle(mPanelTitles[position]);
         }

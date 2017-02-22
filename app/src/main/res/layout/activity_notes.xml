@@ -15,36 +15,30 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         >
-        <TextView
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TBC"
-            android:textStyle="bold"
-            android:id="@+id/tbcTxt"
-            android:textColor="#ed1c24"
-            android:textSize="30sp" />
-        <TextView
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Notes"
-            android:textStyle="bold"
-            android:id="@+id/chatToolbarTxt"
-            android:textColor="#fff"
-            android:textSize="30sp" />
-    </android.support.v7.widget.Toolbar>
+        </android.support.v7.widget.Toolbar>
 
     <android.support.v7.widget.RecyclerView
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
         android:layout_below="@id/notes_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recyclerView" />
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerView"
+        android:layout_alignParentBottom="true" />
+
+    <android.support.design.widget.FloatingActionButton
+        app:fabSize="normal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:onClick="ScrollAwareFABBehavior()"
+        android:layout_alignBottom="@+id/recyclerView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="20dp"
+        android:layout_above="@+id/recyclerView"
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:id="@+id/fab"
+        android:background="@android:drawable/ic_input_add"
+         />
 
 </RelativeLayout>
