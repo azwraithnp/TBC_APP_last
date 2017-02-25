@@ -68,7 +68,7 @@ public class ChatActivity extends Fragment {
         sp= PreferenceManager.getDefaultSharedPreferences(getActivity());
         editor = sp.edit();
         txt = (TextView)v.findViewById(R.id.chatname);
-        user = sp.getString("user_name", "default");
+        user = sp.getString("fname", "default");
         course =  sp.getString("courses","courses");
         if(user.equals("default"))
         {
@@ -225,7 +225,7 @@ public class ChatActivity extends Fragment {
 
                 finalRef.push().setValue(chatMessage);
                 messageBox.setText("");
-
+                cAdapter.notifyDataSetChanged();
             }
         });
 

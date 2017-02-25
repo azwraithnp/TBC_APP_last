@@ -1,6 +1,7 @@
 package com.example.b50i7d.tbcapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
@@ -18,6 +19,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.BottomBarBadge;
 import com.roughike.bottombar.OnMenuTabClickListener;
@@ -30,6 +35,9 @@ public class MainActivity extends ActionBarActivity {
     private String[] mPanelTitles;
     private ActionBarDrawerToggle mDrawerToggle;
 
+    String firebaseURL = "https://student-details-80045.firebaseio.com/";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +49,42 @@ public class MainActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        Intent i = getIntent();
+        firebaseURL = firebaseURL + i.getStringExtra("id") + "/";
+
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("name", MODE_PRIVATE);
+        final SharedPreferences.Editor editor = pref.edit();
+
+        Firebase.setAndroidContext(this);
+        Firebase ref = new Firebase(firebaseURL);
+        Firebase fname = ref.child("fname");
+        fname.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String value = dataSnapshot.getValue(String.class);
+                editor.putString("fname", value);
+                editor.commit();
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+        Firebase lname = ref.child("lname");
+        lname.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String value = dataSnapshot.getValue(String.class);
+                editor.putString("lname", value);
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
 
 
         mPanelTitles = new String[]{"College", "Personal", "Timetable", "Finance", "About Us", "Settings"};
