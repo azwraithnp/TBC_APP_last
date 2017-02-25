@@ -81,7 +81,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onMenuTabSelected(@IdRes int menuItemId) {
                 if (menuItemId == R.id.Bottombaritemone) {
-                    NewsFeedsActivity f = new NewsFeedsActivity();
+                    SettingActivity f = new SettingActivity();
                     getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
                 }
                 if (menuItemId == R.id.Bottombaritemtwo) {
@@ -144,7 +144,7 @@ public class MainActivity extends ActionBarActivity {
         switch (item.getItemId())
         {
             case R.id.help:
-                NotesFragmet.SettingsFragment f = new NotesFragmet.SettingsFragment();
+                SettingActivity f = new SettingActivity();
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
                 return true;
             default:

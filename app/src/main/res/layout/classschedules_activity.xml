@@ -69,7 +69,6 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/txt11"
-                    android:text=" \n loading \n "
                     android:textSize="16sp"
                     android:textAlignment="center"
                     />
@@ -84,7 +83,6 @@
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text=" \n loading \n "
                     android:textSize="16sp"
                     android:layout_marginLeft="2dp"
                     />
@@ -127,7 +125,6 @@
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text=" \n loading \n "
                     android:textSize="16sp"
                     android:textAlignment="center"
                     />
@@ -141,7 +138,6 @@
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text=" \n loading \n "
                     android:textSize="16sp"
                     android:layout_marginLeft="2dp"
                     android:textAlignment="center"
@@ -185,7 +181,6 @@
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text=" \n loading \n "
                     android:textSize="16sp"
                     android:textAlignment="center"
                     />
@@ -199,7 +194,6 @@
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text=" \n loading \n "
                     android:textSize="16sp"
                     android:textAlignment="center"
                     android:layout_marginLeft="2dp"
@@ -243,7 +237,6 @@
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text=" \n loading \n "
                     android:textSize="16sp"
                     android:textAlignment="center"
                     />
@@ -257,7 +250,6 @@
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text=" \n loading \n "
                     android:textSize="16sp"
                     android:layout_marginLeft="2dp"
                     android:textAlignment="center"
@@ -301,7 +293,6 @@
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text=" \n loading \n "
                     android:textSize="16sp"
                     android:textAlignment="center"
                     />
@@ -315,7 +306,6 @@
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text=" \n loading \n "
                     android:textSize="16sp"
                     android:layout_marginLeft="2dp"
                     android:textAlignment="center"
