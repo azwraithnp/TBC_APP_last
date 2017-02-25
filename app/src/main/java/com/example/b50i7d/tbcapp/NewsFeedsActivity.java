@@ -32,13 +32,17 @@ public class NewsFeedsActivity extends Fragment {
     SharedPreferences.Editor editor;
     @Nullable
     @Override
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.newsfeeds_activity,container,false);
         Firebase.setAndroidContext(getActivity());
-        Firebase ref = new Firebase(Config.FIREBASE_URL_bsc);
+        Firebase ref = new Firebase(Config.FIREBASE_URL_bba);
 
         recycleView = (RecyclerView)v.findViewById(R.id.recycler_view);
+
+        cAdapter = new NewsAdapter(list,v.getContext());
         cAdapter = new NewsAdapter(list, getActivity());
+
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recycleView.setLayoutManager(mLayoutManager);
         recycleView.setItemAnimator(new DefaultItemAnimator());
@@ -80,5 +84,6 @@ public class NewsFeedsActivity extends Fragment {
         });
         return v;
     }
+
 }
 

@@ -5,16 +5,16 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -47,7 +47,33 @@ public class NotesFragmet extends Fragment {
 
         Toolbar toolbar = (Toolbar)v.findViewById(R.id.notes_toolbar);
 
+        FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Add a note");
+                final EditText input = new EditText(getContext());
+                builder.setView(input);
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        newNote = input.getText().toString();
+                        notes.add(0, newNote);
+                        savetoSP();
+                        cardAdapter.notifyItemInserted(0);
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
 
+                builder.show();
+            }
+        });
         sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
         editor = sp.edit();
 
@@ -85,6 +111,12 @@ public class NotesFragmet extends Fragment {
                         dialogInterface.cancel();
                     }
                 });
+                builder.setNeutralButton("Underline", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                         
+                    }
+                });
                 builder.show();
             }
         });
@@ -100,4 +132,23 @@ public class NotesFragmet extends Fragment {
         editor.apply();
     }
 
+    /**
+     * A simple {@link Fragment} subclass.
+     */
+    public static class SettingsFragment extends Fragment {
+
+
+        public SettingsFragment() {
+            // Required empty public constructor
+        }
+
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            // Inflate the layout for this fragment
+            return inflater.inflate(R.layout.fragment_settings, container, false);
+        }
+
+    }
 }

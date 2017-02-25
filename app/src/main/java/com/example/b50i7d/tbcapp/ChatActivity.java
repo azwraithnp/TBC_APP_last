@@ -3,6 +3,9 @@ package com.example.b50i7d.tbcapp;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -12,18 +15,22 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -33,11 +40,13 @@ import java.util.List;
  * Created by B50i7D on 11/28/2016.
  */
 public class ChatActivity extends Fragment {
+    private static final int RESULT_OK = 0;
     private List<ChatMessage> list = new ArrayList<>();
     private RecyclerView recycleView;
     private ChatAdapter cAdapter;
     private EditText messageBox;
-    private Button sendButton;
+    Bitmap bitmap;
+    private Button sendButton,imgB;
     private int count;
     TextView txt;
     CardView cv;
@@ -45,11 +54,13 @@ public class ChatActivity extends Fragment {
     public  String user,course;
     SharedPreferences sp;
     SharedPreferences.Editor editor;
+    //Context applicationContext = MainActivity.getContextOfApplication();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+
 
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
@@ -132,8 +143,16 @@ public class ChatActivity extends Fragment {
         }
         messageBox = (EditText)v.findViewById(R.id.chatMessageBox);
         sendButton = (Button)v.findViewById(R.id.sendButton);
+        imgB = (Button) v.findViewById(R.id.imageButton);
 
-
+        imgB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, 0);
+            }
+        });
 
         recycleView = (RecyclerView)v.findViewById(R.id.recycler_view);
         cAdapter = new ChatAdapter(list, getContext());
@@ -184,12 +203,19 @@ public class ChatActivity extends Fragment {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String imageFile = null;
                 String message = messageBox.getText().toString();
+                try{
+                    ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bYtE);
+                    bitmap.recycle();
+                    byte[] byteArray = bYtE.toByteArray();
+                    imageFile = Base64.encodeToString(byteArray, Base64.DEFAULT);
+                }catch(Exception e) {
 
+                }
                 ChatMessage chatMessage = new ChatMessage();
-
-
-
+                chatMessage.setImg(imageFile);
                 chatMessage.setUsername(user);
                 chatMessage.setMessage(message);
                 chatMessage.setCourses(course);
@@ -203,6 +229,27 @@ public class ChatActivity extends Fragment {
             }
         });
 
+
         return v;
     }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // TODO Auto-generated method stub
+        super.onActivityResult(requestCode, resultCode, data);
+        Toast.makeText(this.getActivity(),"asdfasdfasd",Toast.LENGTH_SHORT).show();
+
+        Uri targetUri = data.getData();
+        //textTargetUri.setText(targetUri.toString());
+        try {
+
+            bitmap = BitmapFactory.decodeStream(getActivity().getContentResolver().openInputStream(targetUri));
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+
+
+
 }

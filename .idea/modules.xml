@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TBCAPP.iml" filepath="$PROJECT_DIR$/TBCAPP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TBC_APP_last.iml" filepath="$PROJECT_DIR$/TBC_APP_last.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

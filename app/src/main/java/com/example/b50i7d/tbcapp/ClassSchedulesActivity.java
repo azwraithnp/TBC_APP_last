@@ -1,5 +1,6 @@
 package com.example.b50i7d.tbcapp;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,15 +14,31 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
+import static android.content.Context.MODE_PRIVATE;
+
 /**
  * Created by B50i7D on 11/28/2016.
  */
 public class ClassSchedulesActivity extends Fragment {
+
+    public static String sub11 = "sub11_value";
+    public static String sub12 = "sub12_value";
+    public static String sub21 = "sub21_value";
+    public static String sub22 = "sub22_value";
+    public static String sub31 = "sub31_value";
+    public static String sub32 = "sub32_value";
+    public static String sub41 = "sub41_value";
+    public static String sub42 = "sub42_value";
+    public static String sub51 = "sub51_value";
+    public static String sub52 = "sub52_value";
+
+
     TextView tv11,tv12,tv21,tv22,tv31,tv32,tv41,tv42,tv51,tv52;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.classschedules_activity,container,false);
+
         tv11 = (TextView)v.findViewById(R.id.txt11);
         tv12 = (TextView)v.findViewById(R.id.txt12);
         tv21 = (TextView)v.findViewById(R.id.txt21);
@@ -34,6 +51,20 @@ public class ClassSchedulesActivity extends Fragment {
         tv52 = (TextView)v.findViewById(R.id.txt52);
 
         Firebase.setAndroidContext(getActivity());
+        SharedPreferences sp = getContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sp.edit();
+
+
+        tv11.setText(sp.getString(sub11,""));
+        tv12.setText(sp.getString(sub12,""));
+        tv21.setText(sp.getString(sub21,""));
+        tv22.setText(sp.getString(sub22,""));
+        tv31.setText(sp.getString(sub31,""));
+        tv32.setText(sp.getString(sub32,""));
+        tv41.setText(sp.getString(sub41,""));
+        tv42.setText(sp.getString(sub42,""));
+        tv51.setText(sp.getString(sub51,""));
+        tv52.setText(sp.getString(sub52,""));
 
         Firebase mRef = new Firebase("https://blazing-heat-4318.firebaseio.com/");
         Firebase scheduleRef11 = mRef.child("sub11");
@@ -41,7 +72,9 @@ public class ClassSchedulesActivity extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String value = dataSnapshot.getValue(String.class);
+                editor.putString("sub11_value",value);
                 tv11.setText(value);
+                editor.commit();
             }
 
             @Override
@@ -54,7 +87,9 @@ public class ClassSchedulesActivity extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String value = dataSnapshot.getValue(String.class);
+                editor.putString("sub12_value",value);
                 tv12.setText(value);
+                editor.commit();
             }
 
             @Override
@@ -66,7 +101,9 @@ public class ClassSchedulesActivity extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String value = dataSnapshot.getValue(String.class);
+                editor.putString("sub21_value",value);
                 tv21.setText(value);
+                editor.commit();
             }
 
             @Override
@@ -78,7 +115,9 @@ public class ClassSchedulesActivity extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String value = dataSnapshot.getValue(String.class);
+                editor.putString("sub22_value",value);
                 tv22.setText(value);
+                editor.commit();
             }
 
             @Override
@@ -90,7 +129,9 @@ public class ClassSchedulesActivity extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String value = dataSnapshot.getValue(String.class);
+                editor.putString("sub31_value",value);
                 tv31.setText(value);
+                editor.commit();
             }
 
             @Override
@@ -102,7 +143,9 @@ public class ClassSchedulesActivity extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String value = dataSnapshot.getValue(String.class);
+                editor.putString("sub32_value",value);
                 tv32.setText(value);
+                editor.commit();
             }
 
             @Override
@@ -114,8 +157,9 @@ public class ClassSchedulesActivity extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String value = dataSnapshot.getValue(String.class);
+                editor.putString("sub41_value",value);
                 tv41.setText(value);
-            }
+                editor.commit();            }
 
             @Override
             public void onCancelled(FirebaseError firebaseError) {
@@ -126,7 +170,9 @@ public class ClassSchedulesActivity extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String value = dataSnapshot.getValue(String.class);
+                editor.putString("sub42_value",value);
                 tv42.setText(value);
+                editor.commit();
             }
 
             @Override
@@ -138,7 +184,9 @@ public class ClassSchedulesActivity extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String value = dataSnapshot.getValue(String.class);
+                editor.putString("sub51_value",value);
                 tv51.setText(value);
+                editor.commit();
             }
 
             @Override
@@ -150,7 +198,9 @@ public class ClassSchedulesActivity extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String value = dataSnapshot.getValue(String.class);
+                editor.putString("sub52_value",value);
                 tv52.setText(value);
+                editor.commit();
             }
 
             @Override
