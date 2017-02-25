@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+              login();
             }
         });
 
@@ -76,6 +76,8 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginSuccess() {
         login.setEnabled(true);
+        Intent i = new Intent(LoginActivity.this, MainActivity.class);
+        i.putExtra("id", emailText.getText().toString());
         finish();
     }
 
@@ -109,8 +111,8 @@ public class LoginActivity extends AppCompatActivity {
             emailText.setError(null);
         }
 
-        if (pass.isEmpty() || password.length() < 4 || password.length() > 10) {
-            password.setError("between 4 and 10 alphanumeric characters");
+        if (!(pass.equals("abc"))) {
+            password.setError("Incorrect pass");
             valid = false;
         } else {
             password.setError(null);
