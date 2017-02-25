@@ -27,7 +27,7 @@ public class SettingActivity extends Fragment {
         View v;
         String url = "https://tbcapp.wordpress.com/";
         if (!isConnected(getContext())){
-            buildDialog(getActivity()).show();
+            //buildDialog(getActivity()).show();
              v= inflater.inflate(R.layout.nointernet_activity, container, false);
         }
         else {
