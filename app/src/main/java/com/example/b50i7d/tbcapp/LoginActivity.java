@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
         login.setEnabled(true);
         Intent i = new Intent(LoginActivity.this, MainActivity.class);
         i.putExtra("id", emailText.getText().toString());
-        finish();
+        startActivity(i);
     }
 
     @Override

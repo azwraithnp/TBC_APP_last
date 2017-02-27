@@ -49,7 +49,8 @@ public class ChatActivity extends Fragment {
     private Button sendButton,imgB;
     private int count;
     TextView txt;
-    CardView cv;
+    CardView cv;    public static String name = "fname";
+
 
     public  String user,course;
     SharedPreferences sp;
@@ -68,7 +69,7 @@ public class ChatActivity extends Fragment {
         sp= PreferenceManager.getDefaultSharedPreferences(getActivity());
         editor = sp.edit();
         txt = (TextView)v.findViewById(R.id.chatname);
-        user = sp.getString("fname", "default");
+        user = sp.getString(name, "");
         course =  sp.getString("courses","courses");
         if(user.equals("default"))
         {

@@ -37,6 +37,7 @@ public class MainActivity extends ActionBarActivity {
 
     String firebaseURL = "https://student-details-80045.firebaseio.com/";
 
+    public static String name = "fname";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
