@@ -25,8 +25,9 @@ public class SettingActivity extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v;
-        String url = "https://tbcapp.wordpress.com/";
+        String url = "https://ebookzweb.wordpress.com/";
         if (!isConnected(getContext())){
+            //you can alert the user if there is no internet connection
             //buildDialog(getActivity()).show();
              v= inflater.inflate(R.layout.nointernet_activity, container, false);
         }
@@ -40,8 +41,10 @@ public class SettingActivity extends Fragment {
             view.getSettings().setJavaScriptEnabled(true);
 
         }
+
         return v;
     }
+
 
     public boolean isConnected(Context context) {
 
@@ -73,6 +76,19 @@ public class SettingActivity extends Fragment {
         });
 
         return builder;
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (getActivity().getSupportFragmentManager().findFragmentByTag("MyFragment") != null)
+            getActivity().getSupportFragmentManager().findFragmentByTag("MyFragment").setRetainInstance(true);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (getActivity().getSupportFragmentManager().findFragmentByTag("MyFragment") != null)
+            getActivity().getSupportFragmentManager().findFragmentByTag("MyFragment").getRetainInstance();
     }
 
 }
