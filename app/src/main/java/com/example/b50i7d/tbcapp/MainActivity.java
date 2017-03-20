@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -57,13 +58,14 @@ public class MainActivity extends ActionBarActivity {
         SharedPreferences pref = getApplicationContext().getSharedPreferences("name", MODE_PRIVATE);
         final SharedPreferences.Editor editor = pref.edit();
 
+        Toast.makeText(MainActivity.this, firebaseURL, Toast.LENGTH_LONG).show();
+
         Firebase.setAndroidContext(this);
         Firebase ref = new Firebase(firebaseURL);
-        Firebase fname = ref.child("fname");
-        fname.addValueEventListener(new ValueEventListener() {
+        ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String value = dataSnapshot.getValue(String.class);
+                String value = dataSnapshot.child("fname").getValue(String.class);
                 editor.putString("fname", value);
                 editor.commit();
             }

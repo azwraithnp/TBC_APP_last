@@ -36,6 +36,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static android.content.Context.MODE_PRIVATE;
+
 /**
  * Created by B50i7D on 11/28/2016.
  */
@@ -66,11 +68,12 @@ public class ChatActivity extends Fragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.chats_activity,container,false);
-        sp= PreferenceManager.getDefaultSharedPreferences(getActivity());
+        sp= getActivity().getApplicationContext().getSharedPreferences("name", MODE_PRIVATE);
         editor = sp.edit();
         txt = (TextView)v.findViewById(R.id.chatname);
-        user = sp.getString(name, "");
+        user = sp.getString(name, "default123");
         course =  sp.getString("courses","courses");
+        Toast.makeText(getContext(), user, Toast.LENGTH_SHORT).show();
         if(user.equals("default"))
         {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
