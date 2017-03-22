@@ -2,6 +2,7 @@ package com.example.b50i7d.tbcapp;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,12 +12,30 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+
 public class LoginActivity extends AppCompatActivity {
 
     EditText emailText, password;
     Button login;
 
+    private ProgressDialog pDialog;
+
     private static final String TAG = "LoginActivity";
+
+    String firebaseURL = "https://student-details-80045.firebaseio.com/";
+
+    Firebase ref;
+
+    boolean present = false;
+
+    int count = 0;
+
+    String id;
+
 
 
     @Override
@@ -28,9 +47,14 @@ public class LoginActivity extends AppCompatActivity {
         password = (EditText)findViewById(R.id.input_password);
         login = (Button)findViewById(R.id.btn_login);
 
+        Firebase.setAndroidContext(LoginActivity.this);
+
+        ref = new Firebase(firebaseURL);
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                id = emailText.getText().toString();
               login();
             }
         });
@@ -39,6 +63,8 @@ public class LoginActivity extends AppCompatActivity {
 
     public void login()
     {
+
+
         Log.d(TAG, "Login");
 
         if (!validate()) {
@@ -53,6 +79,8 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
+
+
 
         String email = emailText.getText().toString();
         String pass = password.getText().toString();
@@ -98,8 +126,40 @@ public class LoginActivity extends AppCompatActivity {
     {
         boolean valid = true;
 
-        String id = emailText.getText().toString();
+        final String id = emailText.getText().toString();
         String pass = password.getText().toString();
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    if((postSnapshot.getKey().equals(id)))
+                    {
+                        count = 1;
+                        Toast.makeText(LoginActivity.this, "yeah22", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+
+        });
+
+        Toast.makeText(LoginActivity.this, "" + count, Toast.LENGTH_SHORT).show();
+
+        if(count == 1)
+        {
+            Toast.makeText(LoginActivity.this, "yeah", Toast.LENGTH_SHORT).show();
+            valid = true;
+        }
+        else
+        {
+            valid = false;
+
+        }
 
         if(id.isEmpty() || id.length() < 10)
         {
@@ -122,4 +182,62 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
+
+    private class AuthTask extends AsyncTask<Void, Void, Void>
+    {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // Showing progress dialog
+            pDialog = new ProgressDialog(LoginActivity.this);
+            pDialog.setMessage("Authenticating...");
+            pDialog.setCancelable(false);
+            pDialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(Void... arg0) {
+
+
+            ref.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+
+                        if((postSnapshot.getKey().equals(id)))
+                        {
+                            count = 1;
+                            Toast.makeText(LoginActivity.this, "yeah", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+
+                }
+            });
+
+            return null;
+
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            // Dismiss the progress dialog
+            if (pDialog.isShowing())
+                pDialog.dismiss();
+            if(count == 1)
+            {
+                Toast.makeText(LoginActivity.this, "CONFIRM", Toast.LENGTH_SHORT).show();
+                login.setEnabled(true);
+                Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                i.putExtra("id", emailText.getText().toString());
+                startActivity(i);
+            }
+        }
+    }
+
 }
+
