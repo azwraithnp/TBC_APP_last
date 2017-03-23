@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -28,13 +29,16 @@ public class LoginActivity extends AppCompatActivity {
 
     String firebaseURL = "https://student-details-80045.firebaseio.com/";
 
+    String ids[] = new String[100];
+
     Firebase ref;
 
-    boolean present = false;
+    boolean valid;
 
     int count = 0;
 
     String id;
+
 
 
 
@@ -51,11 +55,40 @@ public class LoginActivity extends AppCompatActivity {
 
         ref = new Firebase(firebaseURL);
 
+        ChildEventListener childEventListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                ids[count] = dataSnapshot.getKey();
+                count++;
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        };
+        ref.addChildEventListener(childEventListener);
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 id = emailText.getText().toString();
-              login();
+                    login();
             }
         });
 
@@ -64,8 +97,6 @@ public class LoginActivity extends AppCompatActivity {
     public void login()
     {
 
-
-        Log.d(TAG, "Login");
 
         if (!validate()) {
 
@@ -124,41 +155,17 @@ public class LoginActivity extends AppCompatActivity {
 
     public boolean validate()
     {
-        boolean valid = true;
 
         final String id = emailText.getText().toString();
         String pass = password.getText().toString();
 
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    if((postSnapshot.getKey().equals(id)))
-                    {
-                        count = 1;
-                        Toast.makeText(LoginActivity.this, "yeah22", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
 
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-
-        });
-
-        Toast.makeText(LoginActivity.this, "" + count, Toast.LENGTH_SHORT).show();
-
-        if(count == 1)
+        for(int i=0;i<count;i++)
         {
-            Toast.makeText(LoginActivity.this, "yeah", Toast.LENGTH_SHORT).show();
-            valid = true;
-        }
-        else
-        {
-            valid = false;
-
+            if(ids[i].equals(id))
+            {
+                valid = true;
+            }
         }
 
         if(id.isEmpty() || id.length() < 10)
@@ -181,62 +188,6 @@ public class LoginActivity extends AppCompatActivity {
         return valid;
 
 
-    }
-
-    private class AuthTask extends AsyncTask<Void, Void, Void>
-    {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            // Showing progress dialog
-            pDialog = new ProgressDialog(LoginActivity.this);
-            pDialog.setMessage("Authenticating...");
-            pDialog.setCancelable(false);
-            pDialog.show();
-        }
-
-        @Override
-        protected Void doInBackground(Void... arg0) {
-
-
-            ref.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-
-                        if((postSnapshot.getKey().equals(id)))
-                        {
-                            count = 1;
-                            Toast.makeText(LoginActivity.this, "yeah", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }
-
-                @Override
-                public void onCancelled(FirebaseError firebaseError) {
-
-                }
-            });
-
-            return null;
-
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-            super.onPostExecute(result);
-            // Dismiss the progress dialog
-            if (pDialog.isShowing())
-                pDialog.dismiss();
-            if(count == 1)
-            {
-                Toast.makeText(LoginActivity.this, "CONFIRM", Toast.LENGTH_SHORT).show();
-                login.setEnabled(true);
-                Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                i.putExtra("id", emailText.getText().toString());
-                startActivity(i);
-            }
-        }
     }
 
 }

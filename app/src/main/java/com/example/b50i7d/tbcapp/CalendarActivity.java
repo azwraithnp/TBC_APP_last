@@ -65,9 +65,9 @@ public class CalendarActivity extends Fragment {
             public void onDateSelected(Date date) {
                 String dt = "";
                 dt = dt + date.toString().charAt(8) + date.toString().charAt(9);
-                if(dt.equals("10"))
+                if(date.equals("wed"))
                 {
-                    Toast.makeText(getActivity(), "Holiday day 1", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "" + date, Toast.LENGTH_SHORT).show();
                 }
                 else if(dt.equals("16"))
                 {
