@@ -21,7 +21,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -51,6 +50,7 @@ public class ChatActivity extends Fragment {
     private int count;
     TextView txt;
     CardView cv;    public static String name = "fname";
+    public static String last_name = "lname";
 
 
     public  String user,course;
@@ -72,7 +72,7 @@ public class ChatActivity extends Fragment {
         txt = (TextView)v.findViewById(R.id.chatname);
         user = sp.getString(name, "default123");
         course =  sp.getString("courses","courses");
-        Toast.makeText(getContext(), user, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(), user, Toast.LENGTH_SHORT).show();
         if(user.equals("default"))
         {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -239,7 +239,7 @@ public class ChatActivity extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         // TODO Auto-generated method stub
         super.onActivityResult(requestCode, resultCode, data);
-        Toast.makeText(this.getActivity(),"asdfasdfasd",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this.getActivity(),"asdfasdfasd",Toast.LENGTH_SHORT).show();
 
         Uri targetUri = data.getData();
         //textTargetUri.setText(targetUri.toString());

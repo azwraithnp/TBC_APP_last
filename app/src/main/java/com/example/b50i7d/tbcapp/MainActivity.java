@@ -38,6 +38,7 @@ public class MainActivity extends ActionBarActivity {
     String firebaseURL = "https://student-details-80045.firebaseio.com/";
 
     public static String name = "fname";
+    public static String last_name="lname";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +74,21 @@ public class MainActivity extends ActionBarActivity {
 
             }
         });
+        Firebase add = ref.child("address");
+        add.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String value = dataSnapshot.getValue(String.class);
+                editor.putString("address", value);
+                editor.commit();
+               // Toast.makeText(getApplicationContext(), value, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
         Firebase lname = ref.child("lname");
         lname.addValueEventListener(new ValueEventListener() {
             @Override
@@ -80,6 +96,53 @@ public class MainActivity extends ActionBarActivity {
                 String value = dataSnapshot.getValue(String.class);
                 editor.putString("lname", value);
                 editor.commit();
+                //Toast.makeText(getApplicationContext(), value, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+        Firebase dob = ref.child("dob");
+        dob.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String value = dataSnapshot.getValue(String.class);
+                editor.putString("dob", value);
+                editor.commit();
+                //Toast.makeText(getApplicationContext(), value, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+        Firebase cell = ref.child("cell");
+        lname.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String value = dataSnapshot.getValue(String.class);
+                editor.putString("cell", value);
+                editor.commit();
+                //Toast.makeText(getApplicationContext(), value, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+        Firebase password = ref.child("password");
+        lname.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String value = dataSnapshot.getValue(String.class);
+                editor.putString("password", value);
+                editor.commit();
+                //Toast.makeText(getApplicationContext(), value, Toast.LENGTH_SHORT).show();
             }
 
             @Override

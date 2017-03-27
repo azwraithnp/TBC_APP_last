@@ -60,15 +60,15 @@
             />
         <Button
             android:layout_width="55dp"
-            android:layout_height="39dp"
+            android:layout_height="45dp"
             android:id="@+id/imageButton"
-            android:background="@android:drawable/ic_menu_gallery"
+            android:background="@drawable/gallary"
             />
         <Button
             android:layout_width="55dp"
-            android:layout_height="39dp"
+            android:layout_height="45dp"
             android:id="@+id/sendButton"
-            android:background="@android:drawable/ic_menu_send"
+            android:background="@drawable/send"
             />
 
     </LinearLayout>
