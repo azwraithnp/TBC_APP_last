@@ -58,7 +58,6 @@ public class MainActivity extends ActionBarActivity {
         SharedPreferences pref = getApplicationContext().getSharedPreferences("name", MODE_PRIVATE);
         final SharedPreferences.Editor editor = pref.edit();
 
-        Toast.makeText(MainActivity.this, firebaseURL, Toast.LENGTH_LONG).show();
 
         Firebase.setAndroidContext(this);
         Firebase ref = new Firebase(firebaseURL);
@@ -81,6 +80,7 @@ public class MainActivity extends ActionBarActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String value = dataSnapshot.getValue(String.class);
                 editor.putString("lname", value);
+                editor.commit();
             }
 
             @Override
@@ -162,7 +162,7 @@ public class MainActivity extends ActionBarActivity {
 
         BottomBarBadge unread;
         unread = btmbar.makeBadgeForTabAt(3, "#ff0000", 13);
-        unread.show();
+        //unread.show();
 
 
     }

@@ -117,7 +117,6 @@ public class LoginActivity extends AppCompatActivity {
         String pass = password.getText().toString();
 
         // TODO: Implement your own authentication logic here.
-
         new android.os.Handler().postDelayed(
                 new Runnable() {
                     public void run() {

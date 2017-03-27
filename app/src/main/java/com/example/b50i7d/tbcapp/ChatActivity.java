@@ -1,5 +1,6 @@
 package com.example.b50i7d.tbcapp;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -51,7 +52,9 @@ public class ChatActivity extends Fragment {
     private Button sendButton,imgB;
     private int count;
     TextView txt;
-    CardView cv;    public static String name = "fname";
+    CardView cv;
+    public static String name = "fname";
+    Bitmap bitmap2;
 
 
     public  String user,course;
@@ -209,15 +212,21 @@ public class ChatActivity extends Fragment {
             public void onClick(View view) {
                 String imageFile = null;
                 String message = messageBox.getText().toString();
+                final ProgressDialog progressDialog = new ProgressDialog(getActivity(), R.style.AppTheme_Dark_Dialog);
+                progressDialog.setIndeterminate(true);
+                progressDialog.setMessage("Uploading...");
+                progressDialog.show();
                 try{
                     ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bYtE);
-                    bitmap.recycle();
+                    bitmap2.compress(Bitmap.CompressFormat.JPEG, 100, bYtE);
+                    bitmap2.recycle();
                     byte[] byteArray = bYtE.toByteArray();
+                    Toast.makeText(getActivity(), "" + bitmap2.getByteCount(), Toast.LENGTH_SHORT).show();
                     imageFile = Base64.encodeToString(byteArray, Base64.DEFAULT);
                 }catch(Exception e) {
 
                 }
+                Toast.makeText(getActivity(), "here", Toast.LENGTH_SHORT).show();
                 ChatMessage chatMessage = new ChatMessage();
                 chatMessage.setImg(imageFile);
                 chatMessage.setUsername(user);
@@ -228,6 +237,8 @@ public class ChatActivity extends Fragment {
                 chatMessage.setDate(currentDateandTime);
 
                 finalRef.push().setValue(chatMessage);
+                progressDialog.dismiss();
+                Toast.makeText(getActivity(), "here2", Toast.LENGTH_SHORT).show();
                 messageBox.setText("");
                 cAdapter.notifyDataSetChanged();
             }
@@ -247,6 +258,8 @@ public class ChatActivity extends Fragment {
         try {
 
             bitmap = BitmapFactory.decodeStream(getActivity().getContentResolver().openInputStream(targetUri));
+            int nh = (int) ( bitmap.getHeight() * (512.0 / bitmap.getWidth()) );
+            bitmap2 = Bitmap.createScaledBitmap(bitmap, 512, nh, true);
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
