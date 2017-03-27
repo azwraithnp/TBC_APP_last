@@ -18,7 +18,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -217,14 +216,16 @@ public class MainActivity extends ActionBarActivity {
                     NotesFragmet.SettingsFragment f = new NotesFragmet.SettingsFragment();
                     getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
                     break;
+                case 1:
+                    Intent intent = new Intent(MainActivity.this, personalActivity.class);
+                    startActivity(intent);
+                    break;
                 case 4:
                     startActivity(new Intent(MainActivity.this, MainActivity.class));
                     break;
-
             }
             setTitle(mPanelTitles[position]);
         }
-
     }
 
 }

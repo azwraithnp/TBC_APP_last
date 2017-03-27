@@ -18,6 +18,7 @@
             android:src="@drawable/nointernet"
             />
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,6 +38,7 @@
             android:text="alish MAnanndhar"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
+            android:id="@+id/username"
             />
     </LinearLayout>
 

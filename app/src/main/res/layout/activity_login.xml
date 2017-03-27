@@ -28,7 +28,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
-                android:hint="ID" />
+                android:hint="ID"
+                android:text="4007582037"
+                />
         </android.support.design.widget.TextInputLayout>
 
         <!--  Password Label -->
@@ -41,6 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
+                android:text="abc"
                 android:hint="Password"/>
         </android.support.design.widget.TextInputLayout>
 

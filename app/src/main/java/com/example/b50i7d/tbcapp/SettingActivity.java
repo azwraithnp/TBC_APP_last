@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
 
 /**
  * Created by B50i7D on 11/29/2016.
@@ -32,7 +31,7 @@ public class SettingActivity extends Fragment {
              v= inflater.inflate(R.layout.nointernet_activity, container, false);
         }
         else {
-            Toast.makeText(getContext(), "connected", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(), "connected", Toast.LENGTH_SHORT).show();
             v = inflater.inflate(R.layout.fragment_settings, container, false);
             WebView view = (WebView) v.findViewById(R.id.webview1);
             view.getSettings().setJavaScriptEnabled(true);
