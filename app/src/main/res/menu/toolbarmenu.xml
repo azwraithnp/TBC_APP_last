@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <group
-        android:id="@+id/addote"
-        android:title="Add note"
-        app:showAsAction="ifRoom"
-        android:icon="@android:drawable/ic_input_add"></group>
-        <item
-            android:id="@+id/help"
-            android:title="help"
-            />
-        />
+    <item
+        android:title="help"
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_account_circle_black_24dp"
+        app:showAsAction="always"/>
 </menu>

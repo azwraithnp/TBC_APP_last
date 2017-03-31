@@ -74,6 +74,8 @@ public class NotesFragmet extends Fragment {
                 builder.show();
             }
         });
+
+
         sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
         editor = sp.edit();
 

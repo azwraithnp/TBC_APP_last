@@ -3,6 +3,7 @@ package com.example.b50i7d.tbcapp;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.widget.DrawerLayout;
@@ -45,7 +46,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar myToolbar = (Toolbar)findViewById(R.id.main_toolbar);
+        final Toolbar myToolbar = (Toolbar)findViewById(R.id.main_toolbar);
         setSupportActionBar(myToolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -121,7 +122,7 @@ public class MainActivity extends ActionBarActivity {
         });
 
         Firebase cell = ref.child("cell");
-        lname.addValueEventListener(new ValueEventListener() {
+        cell.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String value = dataSnapshot.getValue(String.class);
@@ -136,7 +137,7 @@ public class MainActivity extends ActionBarActivity {
             }
         });
         Firebase password = ref.child("password");
-        lname.addValueEventListener(new ValueEventListener() {
+        password.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String value = dataSnapshot.getValue(String.class);
@@ -191,22 +192,27 @@ public class MainActivity extends ActionBarActivity {
             public void onMenuTabSelected(@IdRes int menuItemId) {
                 if (menuItemId == R.id.Bottombaritemone) {
                     SettingActivity f = new SettingActivity();
+                    myToolbar.setBackgroundColor(Color.parseColor("#2980b9"));
                     getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
                 }
                 if (menuItemId == R.id.Bottombaritemtwo) {
                     ChatActivity f = new ChatActivity();
+                    myToolbar.setBackgroundColor(Color.parseColor("#3498db"));
                     getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
                 }
                 if (menuItemId == R.id.Bottombaritemthree) {
                     ClassSchedulesActivity f = new ClassSchedulesActivity();
+                    myToolbar.setBackgroundColor(Color.parseColor("#48647c"));
                     getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
                 }
                 if (menuItemId == R.id.Bottombaritemfour) {
                     NotesFragmet f = new NotesFragmet();
+                    myToolbar.setBackgroundColor(Color.parseColor("#F4D03F"));
                     getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
                 }
                 if (menuItemId == R.id.Bottombaritemfive) {
                     CalendarActivity f = new CalendarActivity();
+                    myToolbar.setBackgroundColor(Color.parseColor("#303F9F"));
                     getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
                 }
             }
@@ -219,7 +225,7 @@ public class MainActivity extends ActionBarActivity {
         btmbar.mapColorForTab(0, "#2980b9");
         btmbar.mapColorForTab(1, "#3498db");
         btmbar.mapColorForTab(2, "#48647c");
-        btmbar.mapColorForTab(3, "#e3a712");
+        btmbar.mapColorForTab(3, "#F4D03F");
         btmbar.mapColorForTab(4, "#303F9F");
 
         BottomBarBadge unread;
@@ -252,9 +258,9 @@ public class MainActivity extends ActionBarActivity {
 
         switch (item.getItemId())
         {
-            case R.id.help:
-                SettingActivity f = new SettingActivity();
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
+            case R.id.profile:
+                Intent intent = new Intent(MainActivity.this, personalActivity.class);
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
