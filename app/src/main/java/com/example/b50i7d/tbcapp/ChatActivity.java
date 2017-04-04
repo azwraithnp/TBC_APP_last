@@ -238,11 +238,13 @@ public class ChatActivity extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         // TODO Auto-generated method stub
+
         super.onActivityResult(requestCode, resultCode, data);
         //Toast.makeText(this.getActivity(),"asdfasdfasd",Toast.LENGTH_SHORT).show();
 
         Uri targetUri = data.getData();
         //textTargetUri.setText(targetUri.toString());
+
         try {
 
             bitmap = BitmapFactory.decodeStream(getActivity().getContentResolver().openInputStream(targetUri));

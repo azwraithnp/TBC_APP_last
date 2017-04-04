@@ -153,7 +153,7 @@ public class MainActivity extends ActionBarActivity {
         });
 
 
-        mPanelTitles = new String[]{"College", "Personal", "Timetable", "Finance", "About Us", "Settings"};
+        mPanelTitles = new String[]{"College", "Personal", "Attendance", "Lost And Found", "About Us", "Settings"};
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.leftlist);
 
