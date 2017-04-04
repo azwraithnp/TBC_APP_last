@@ -289,6 +289,16 @@ public class MainActivity extends ActionBarActivity {
                     Intent intent = new Intent(MainActivity.this, personalActivity.class);
                     startActivity(intent);
                     break;
+                case 2:
+                    NewsFeedsActivity f1 = new NewsFeedsActivity();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame, f1).commit();
+                    break;
+
+                case 3:
+                    Intent intent1 = new Intent(MainActivity.this, LostAndFoundActivity.class);
+                    startActivity(intent1);
+                     break;
+
                 case 4:
                     startActivity(new Intent(MainActivity.this, MainActivity.class));
                     break;

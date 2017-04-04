@@ -15,10 +15,10 @@ import java.util.List;
 /**
  * Created by Dell on 7/15/2016.
  */
-public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
-    private List<NewsMessage> newsMessages;
+public class LostAdapter extends RecyclerView.Adapter<LostAdapter.MyViewHolder>{
+    private List<LostMessage> newsMessages;
     private Context context;
-    
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView username, message,date;
@@ -31,14 +31,14 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
             message = (TextView) view.findViewById(R.id.newsMessage);
             date = (TextView) view.findViewById(R.id.date);
             img = (ImageView) view.findViewById(R.id.mDownloadImageView);
-            //Picasso.with(context).load(downloadUrl.toString()).into(img);
+            Picasso.with(context).load(downloadUrl.toString()).into(img);
         }
     }
 
-    public NewsAdapter(List<NewsMessage> chatMessages, Context contxt)
+    public LostAdapter(List<LostMessage> chatMessages, Context contxt)
     {
         this.newsMessages = chatMessages;
-        this.context = contxt;
+
     }
 
     @Override
@@ -51,17 +51,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        NewsMessage chat = newsMessages.get(position);
+        LostMessage chat = newsMessages.get(position);
         holder.username.setText(chat.getUsername());
         holder.message.setText(chat.getMessage());
         holder.date.setText(chat.getDate());
-        try{
-            Picasso.with(context).load(chat.getUrl().toString()).into(holder.img);
-        }
-        catch (Exception e){
-        }
-
-
+        Picasso.with(context).load(chat.getUrl().toString()).into(holder.img);
     }
 
     @Override

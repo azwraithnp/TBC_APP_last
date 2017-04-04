@@ -28,6 +28,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".personalActivity"/>
+        <activity android:name=".LostActivity"/>
+        <activity android:name=".LostAndFoundActivity"/>
+
     </application>
 
 </manifest>

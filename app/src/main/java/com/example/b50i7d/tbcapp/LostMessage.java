@@ -3,15 +3,14 @@ package com.example.b50i7d.tbcapp;
 /**
  * Created by Dell on 7/14/2016.
  */
-public class NewsMessage {
+public class LostMessage {
     private String username;
     private String message;
-    private String date;
+    private String dates;
     private String courses;
-    private String img;
     private String url;
 
-    public NewsMessage()
+    public LostMessage()
     {
 
     }
@@ -33,11 +32,11 @@ public class NewsMessage {
     }
 
     public String getDate() {
-        return date;
+        return dates;
     }
 
     public void setDate(String date) {
-        this.date = date;
+        this.dates = date;
     }
 
     public String getMessage() {
@@ -51,11 +50,4 @@ public class NewsMessage {
     public String getCourses(){return courses; }
 
     public void setCourses(String courses){this.courses = courses;}
-
-    public String getImg() {
-        return img;
-    }
-    public void setImg(String Img) {
-        this.img = img;
-    }
 }

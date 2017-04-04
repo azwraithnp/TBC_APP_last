@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10px"
+    android:padding="20px"
     >
 
     <LinearLayout
@@ -35,7 +35,7 @@
     <view
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="grey"
+        android:background="#eeeeee"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
         />
