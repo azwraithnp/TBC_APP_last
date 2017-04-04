@@ -262,6 +262,7 @@ public class MainActivity extends ActionBarActivity {
                 Intent intent = new Intent(MainActivity.this, personalActivity.class);
                 startActivity(intent);
                 return true;
+
             default:
                 return super.onOptionsItemSelected(item);
 
@@ -300,7 +301,7 @@ public class MainActivity extends ActionBarActivity {
                      break;
 
                 case 4:
-                    startActivity(new Intent(MainActivity.this, MainActivity.class));
+                    startActivity(new Intent(MainActivity.this, AttendanceActivity.class));
                     break;
             }
             setTitle(mPanelTitles[position]);
