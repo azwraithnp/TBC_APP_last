@@ -283,17 +283,15 @@ public class MainActivity extends ActionBarActivity {
             switch (position) {
                 case 0:
                     //TODO: Insert the proper classes
-                    NotesFragmet.SettingsFragment f = new NotesFragmet.SettingsFragment();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
+                    startActivity(new Intent(MainActivity.this, CollegeActivity.class));
                     break;
                 case 1:
                     Intent intent = new Intent(MainActivity.this, personalActivity.class);
                     startActivity(intent);
                     break;
                 case 2:
-                    NewsFeedsActivity f1 = new NewsFeedsActivity();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frame, f1).commit();
-                    break;
+                    startActivity(new Intent(MainActivity.this, AttendanceListActivity.class));
+                     break;
 
                 case 3:
                     Intent intent1 = new Intent(MainActivity.this, LostAndFoundActivity.class);
@@ -301,7 +299,7 @@ public class MainActivity extends ActionBarActivity {
                      break;
 
                 case 4:
-                    startActivity(new Intent(MainActivity.this, AttendanceActivity.class));
+                    startActivity(new Intent(MainActivity.this, AboutActivity.class));
                     break;
             }
             setTitle(mPanelTitles[position]);

@@ -1,5 +1,6 @@
 package com.example.b50i7d.tbcapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -31,15 +32,14 @@ public class AttendanceActivity extends AppCompatActivity implements AttendanceL
     List<AttendanceObject> list = new ArrayList<>();
     List<AttendanceObject> list2 = new ArrayList<>();
     TextView txt;
-
-    String firebaseURL = "https://student-details-80045.firebaseio.com/";
     String firebaseURL2 = "https://tbcapp-1470055419551.firebaseio.com/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendance);
-
+        Intent intent = getIntent();
+        String firebaseURL = intent.getExtras().getString("url");
         txt = (TextView)findViewById(R.id.textsample);
 
         Firebase.setAndroidContext(AttendanceActivity.this);

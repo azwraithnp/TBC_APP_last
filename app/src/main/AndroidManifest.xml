@@ -30,7 +30,11 @@
         <activity android:name=".personalActivity"/>
         <activity android:name=".LostActivity"/>
         <activity android:name=".AttendanceActivity"/>
+        <activity android:name=".AttendanceListActivity"/>
         <activity android:name=".LostAndFoundActivity"/>
+        <activity android:name=".NewsFeedsActivity"/>
+        <activity android:name=".CollegeActivity"/>
+        <activity android:name=".AboutActivity"/>
 
     </application>
 
