@@ -28,7 +28,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".personalActivity"/>
-        <activity android:name=".LostActivity"/>
+        <activity android:name=".LostActivity" android:theme="@style/AppTheme.Dark">
+           </activity>
         <activity android:name=".AttendanceActivity"/>
         <activity android:name=".AttendanceListActivity"/>
         <activity android:name=".LostAndFoundActivity"/>
