@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "615116609111",
+    "firebase_url": "https://tbcnotification-a94f5.firebaseio.com",
+    "project_id": "tbcnotification-a94f5",
+    "storage_bucket": "tbcnotification-a94f5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:615116609111:android:e6fb496de7ce3f12",
+        "android_client_info": {
+          "package_name": "com.example.b50i7d.tbcapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "615116609111-ve94obkr3l2kmo6ore19cat7135osrvc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgiTdASdiMoepDOvPFxB_VZMQ9p7kMWcw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

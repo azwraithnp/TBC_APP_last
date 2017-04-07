@@ -1,5 +1,6 @@
 package com.example.b50i7d.tbcapp;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -9,6 +10,7 @@ import android.support.annotation.IdRes;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -55,6 +58,21 @@ public class MainActivity extends ActionBarActivity {
 
         Intent i = getIntent();
         firebaseURL = firebaseURL + i.getStringExtra("id") + "/";
+        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+        alertDialog.setTitle("TBC");
+        if(i.getStringExtra("notification") == null){
+            Toast.makeText(MainActivity.this,"no notification",Toast.LENGTH_SHORT).show();
+        }else{
+            alertDialog.setMessage(i.getStringExtra("notification"));
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            alertDialog.show();
+
+        }
 
         SharedPreferences pref = getApplicationContext().getSharedPreferences("name", MODE_PRIVATE);
         final SharedPreferences.Editor editor = pref.edit();

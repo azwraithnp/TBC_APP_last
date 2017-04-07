@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 /**
@@ -19,6 +20,13 @@ public class AttendanceListActivity extends AppCompatActivity {
         cv1 = (CardView)findViewById(R.id.l4seca);
         cv2 = (CardView)findViewById(R.id.l4secb);
         cv3 = (CardView)findViewById(R.id.l4secc);
+
+        Toolbar myToolbar = (Toolbar)findViewById(R.id.main_toolbar);
+        setSupportActionBar(myToolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         cv1.setOnClickListener(new View.OnClickListener() {
             @Override

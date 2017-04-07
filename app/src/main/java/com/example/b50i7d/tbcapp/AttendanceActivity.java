@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,6 +42,13 @@ public class AttendanceActivity extends AppCompatActivity implements AttendanceL
         Intent intent = getIntent();
         String firebaseURL = intent.getExtras().getString("url");
         txt = (TextView)findViewById(R.id.textsample);
+
+        Toolbar myToolbar = (Toolbar)findViewById(R.id.main_toolbar);
+        setSupportActionBar(myToolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         Firebase.setAndroidContext(AttendanceActivity.this);
 

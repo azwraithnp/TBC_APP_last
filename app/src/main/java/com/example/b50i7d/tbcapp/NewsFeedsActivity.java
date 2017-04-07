@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -32,6 +33,13 @@ public class NewsFeedsActivity extends AppCompatActivity {
         setContentView(R.layout.newsfeeds_activity);
         Firebase.setAndroidContext(getApplicationContext());
         Firebase ref = new Firebase(Config.FIREBASE_URL_bba);
+
+        Toolbar myToolbar = (Toolbar)findViewById(R.id.main_toolbar);
+        setSupportActionBar(myToolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         recycleView = (RecyclerView)findViewById(R.id.recycler_view);
 
