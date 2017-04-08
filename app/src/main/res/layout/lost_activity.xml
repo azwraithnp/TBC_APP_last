@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <android.support.v7.widget.Toolbar
-            android:id="@+id/main_toolbar"
+            android:id="@+id/main2_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="#4d57d9"
@@ -54,7 +54,7 @@
                     android:textSize="25sp"
                     android:textAlignment="center"
                     />
-                <view
+                <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#e0e0e0"
