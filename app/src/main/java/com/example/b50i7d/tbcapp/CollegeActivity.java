@@ -35,7 +35,7 @@ public class CollegeActivity extends Activity {
                 if (newProgress > 0) {
                     showProgressDialog("Please Wait");
                 }
-                if (newProgress >= 50) {
+                if (newProgress >= 30) {
                     hideProgressDialog();
                 }
             }
@@ -48,7 +48,10 @@ public class CollegeActivity extends Activity {
         runOnUiThread(new Runnable() {
             public void run() {
                 if (progress == null || !progress.isShowing()) {
-                    progress = ProgressDialog.show(CollegeActivity.this, "", msg);
+                    try{}catch(Exception e){
+                        progress = ProgressDialog.show(CollegeActivity.this, "", msg);
+                    }
+
                 }
             }
         });

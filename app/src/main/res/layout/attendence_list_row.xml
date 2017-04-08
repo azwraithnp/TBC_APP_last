@@ -12,29 +12,37 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:minWidth="45dp"
+            android:maxHeight="45dp"
+            android:maxWidth="45dp"
             android:id="@+id/student_img"
             android:layout_width="0dp"
             android:layout_height="45dp"
+            android:minHeight="45dp"
             android:layout_weight="1.4"
             android:src="@drawable/profile" />
 
         <TextView
             android:id="@+id/student_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="45dp"
+            android:minHeight="45dp"
+            android:maxHeight="45dp"
             android:layout_weight="3"
             android:padding="8dp"
             android:text="name of the student"
-            android:textSize="20dp" />
+            android:textSize="15dp" />
 
         <ImageView
             android:id="@+id/attendicon"
             android:layout_width="0dp"
             android:layout_height="45dp"
+            android:minHeight="45dp"
+            android:minWidth="45dp"
+            android:maxWidth="45dp"
+            android:maxHeight="45dp"
             android:layout_weight="1"
             android:src="@drawable/tick" />
-
     </LinearLayout>
-
 
 </LinearLayout>
