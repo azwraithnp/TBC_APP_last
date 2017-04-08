@@ -38,6 +38,7 @@ public class MainActivity extends ActionBarActivity {
     private ListView mDrawerList;
     private String[] mPanelTitles;
     private ActionBarDrawerToggle mDrawerToggle;
+    String get;
 
     String firebaseURL = "https://student-details-80045.firebaseio.com/";
 
@@ -51,13 +52,15 @@ public class MainActivity extends ActionBarActivity {
 
         final Toolbar myToolbar = (Toolbar)findViewById(R.id.main_toolbar);
         setSupportActionBar(myToolbar);
-
+        Intent i = getIntent();
+         get = i.getStringExtra("id");
+        firebaseURL = firebaseURL + i.getStringExtra("id") + "/";
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        Intent i = getIntent();
-        firebaseURL = firebaseURL + i.getStringExtra("id") + "/";
+
+
         AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
         alertDialog.setTitle("TBC");
         if(i.getStringExtra("notification") == null){
@@ -171,7 +174,7 @@ public class MainActivity extends ActionBarActivity {
         });
 
 
-        mPanelTitles = new String[]{"College", "Personal", "Attendance", "Lost And Found", "About Us", "Settings"};
+        mPanelTitles = new String[]{"College", "Personal", "Attendance", "Lost And Found", "About Us","Canteen Menu", "Settings"};
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.leftlist);
 
@@ -243,7 +246,7 @@ public class MainActivity extends ActionBarActivity {
         btmbar.mapColorForTab(0, "#2980b9");
         btmbar.mapColorForTab(1, "#3498db");
         btmbar.mapColorForTab(2, "#48647c");
-        btmbar.mapColorForTab(3, "#F4D03F");
+        btmbar.mapColorForTab(3, "#d7b735");
         btmbar.mapColorForTab(4, "#303F9F");
 
         BottomBarBadge unread;
@@ -308,7 +311,9 @@ public class MainActivity extends ActionBarActivity {
                     startActivity(intent);
                     break;
                 case 2:
-                    startActivity(new Intent(MainActivity.this, AttendanceListActivity.class));
+                    Intent i = new Intent(MainActivity.this, AttendanceListActivity.class);
+                    i.putExtra("id",get);
+                    startActivity(i);
                      break;
 
                 case 3:
@@ -318,6 +323,9 @@ public class MainActivity extends ActionBarActivity {
 
                 case 4:
                     startActivity(new Intent(MainActivity.this, AboutActivity.class));
+                    break;
+                case 5:
+                    Toast.makeText(MainActivity.this,"comming soon",Toast.LENGTH_SHORT).show();
                     break;
             }
             setTitle(mPanelTitles[position]);

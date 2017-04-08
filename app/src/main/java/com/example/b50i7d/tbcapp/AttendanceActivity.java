@@ -32,7 +32,7 @@ public class AttendanceActivity extends AppCompatActivity implements AttendanceL
     AttendanceAdapter attendanceAdapter;
     List<AttendanceObject> list = new ArrayList<>();
     List<AttendanceObject> list2 = new ArrayList<>();
-    TextView txt;
+    TextView txt,date;
     String firebaseURL2;
 
     @Override
@@ -43,7 +43,15 @@ public class AttendanceActivity extends AppCompatActivity implements AttendanceL
         String firebaseURL = intent.getExtras().getString("url");
         firebaseURL2 = intent.getStringExtra("url2");
         txt = (TextView)findViewById(R.id.textsample);
+        date = (TextView) findViewById(R.id.attendance_date);
 
+        Calendar c = Calendar.getInstance();
+        System.out.println("Current time => " + c.getTime());
+
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+        String formattedDate = df.format(c.getTime());
+
+        date.setText(formattedDate);
         Toolbar myToolbar = (Toolbar)findViewById(R.id.main_toolbar);
         setSupportActionBar(myToolbar);
 

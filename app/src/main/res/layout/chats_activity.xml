@@ -28,7 +28,6 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="#a9a9a9"
-        android:layout_above="@+id/chatMessageBox"
         android:id="@+id/view" />
 
 
@@ -40,6 +39,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/chatname"
         android:layout_alignParentLeft="true"
+        android:background="@drawable/chat_background"
         android:layout_alignParentStart="true"
         android:layout_above="@+id/linearLayout" />
 
