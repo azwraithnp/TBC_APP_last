@@ -33,7 +33,7 @@ public class AttendanceActivity extends AppCompatActivity implements AttendanceL
     List<AttendanceObject> list = new ArrayList<>();
     List<AttendanceObject> list2 = new ArrayList<>();
     TextView txt;
-    String firebaseURL2 = "https://tbcapp-1470055419551.firebaseio.com/";
+    String firebaseURL2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +41,7 @@ public class AttendanceActivity extends AppCompatActivity implements AttendanceL
         setContentView(R.layout.activity_attendance);
         Intent intent = getIntent();
         String firebaseURL = intent.getExtras().getString("url");
+        firebaseURL2 = intent.getStringExtra("url2");
         txt = (TextView)findViewById(R.id.textsample);
 
         Toolbar myToolbar = (Toolbar)findViewById(R.id.main_toolbar);
@@ -53,6 +54,8 @@ public class AttendanceActivity extends AppCompatActivity implements AttendanceL
         Firebase.setAndroidContext(AttendanceActivity.this);
 
         Firebase ref = new Firebase(firebaseURL);
+
+        Toast.makeText(AttendanceActivity.this, "Loading...", Toast.LENGTH_SHORT).show();
 
         ChildEventListener childEventListener = new ChildEventListener() {
             @Override
@@ -70,6 +73,7 @@ public class AttendanceActivity extends AppCompatActivity implements AttendanceL
                 attendanceObject.setAttendance("present");
                 attendanceObject.setDate(sdf.format(new Date()));
                 list.add(attendanceObject);
+                attendanceAdapter.notifyDataSetChanged();
 
             }
 

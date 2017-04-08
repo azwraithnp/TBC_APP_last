@@ -32,8 +32,10 @@ public class AttendanceListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
             String url = "https://student-details-80045.firebaseio.com/";
+                String url2 = "https://tbcapp-1470055419551.firebaseio.com/";
                 Intent i = new Intent(AttendanceListActivity.this,AttendanceActivity.class);
                 i.putExtra("url",url);
+                i.putExtra("url2", url2);
                 startActivity(i);
             }
         });
@@ -41,17 +43,21 @@ public class AttendanceListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String url = "https://alish.firebaseio.com/";
+                String url2 = "https://theta-cable-138914.firebaseio.com/";
                 Intent i = new Intent(AttendanceListActivity.this,AttendanceActivity.class);
                 i.putExtra("url",url);
+                i.putExtra("url2", url2);
                 startActivity(i);
             }
         });
         cv3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = "https:tbcchat.firebaseio.com/";
+                String url = "https://tbcchat.firebaseio.com/";
+                String url2 = "https://api-project-1-1139.firebaseio.com/";
                 Intent i = new Intent(AttendanceListActivity.this,AttendanceActivity.class);
                 i.putExtra("url",url);
+                i.putExtra("url2", url2);
                 startActivity(i);
             }
         });

@@ -40,7 +40,7 @@
         </service>
 
         <activity android:name=".personalActivity"/>
-        <activity android:name=".LostActivity" android:theme="@style/AppTheme.Dark">
+        <activity android:name=".LostActivity">
            </activity>
         <activity android:name=".AttendanceActivity"/>
         <activity android:name=".AttendanceListActivity"/>
