@@ -171,7 +171,7 @@ public class MainActivity extends ActionBarActivity {
         });
 
 
-        mPanelTitles = new String[]{"College", "Personal", "Attendance", "Lost And Found", "About Us", "Settings"};
+        mPanelTitles = new String[]{"College", "Personal", "Attendance", "Lost And Found", "About Us","Canteen Menu", "Settings"};
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.leftlist);
 
@@ -243,7 +243,7 @@ public class MainActivity extends ActionBarActivity {
         btmbar.mapColorForTab(0, "#2980b9");
         btmbar.mapColorForTab(1, "#3498db");
         btmbar.mapColorForTab(2, "#48647c");
-        btmbar.mapColorForTab(3, "#F4D03F");
+        btmbar.mapColorForTab(3, "#d7b735");
         btmbar.mapColorForTab(4, "#303F9F");
 
         BottomBarBadge unread;
