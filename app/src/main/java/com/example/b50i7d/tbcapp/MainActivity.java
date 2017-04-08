@@ -38,6 +38,7 @@ public class MainActivity extends ActionBarActivity {
     private ListView mDrawerList;
     private String[] mPanelTitles;
     private ActionBarDrawerToggle mDrawerToggle;
+    String get;
 
     String firebaseURL = "https://student-details-80045.firebaseio.com/";
 
@@ -51,13 +52,15 @@ public class MainActivity extends ActionBarActivity {
 
         final Toolbar myToolbar = (Toolbar)findViewById(R.id.main_toolbar);
         setSupportActionBar(myToolbar);
-
+        Intent i = getIntent();
+         get = i.getStringExtra("id");
+        firebaseURL = firebaseURL + i.getStringExtra("id") + "/";
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        Intent i = getIntent();
-        firebaseURL = firebaseURL + i.getStringExtra("id") + "/";
+
+
         AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
         alertDialog.setTitle("TBC");
         if(i.getStringExtra("notification") == null){
@@ -308,7 +311,9 @@ public class MainActivity extends ActionBarActivity {
                     startActivity(intent);
                     break;
                 case 2:
-                    startActivity(new Intent(MainActivity.this, AttendanceListActivity.class));
+                    Intent i = new Intent(MainActivity.this, AttendanceListActivity.class);
+                    i.putExtra("id",get);
+                    startActivity(i);
                      break;
 
                 case 3:
@@ -318,6 +323,9 @@ public class MainActivity extends ActionBarActivity {
 
                 case 4:
                     startActivity(new Intent(MainActivity.this, AboutActivity.class));
+                    break;
+                case 5:
+                    Toast.makeText(MainActivity.this,"comming soon",Toast.LENGTH_SHORT).show();
                     break;
             }
             setTitle(mPanelTitles[position]);
