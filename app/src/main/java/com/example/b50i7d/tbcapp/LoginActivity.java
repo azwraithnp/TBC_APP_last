@@ -87,6 +87,7 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 id = emailText.getText().toString();
                     login();
             }
@@ -94,8 +95,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void login()
-    {
+    public void login() {
 
 
         if (!validate()) {
@@ -112,24 +112,14 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.show();
 
 
-
         String email = emailText.getText().toString();
         String pass = password.getText().toString();
 
-        // TODO: Implement your own authentication logic here.
-        new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        // On complete call either onLoginSuccess or onLoginFailed
-                        onLoginSuccess();
-                        // onLoginFailed();
-                        progressDialog.dismiss();
-                    }
-                }, 3000);
+        // On complete call either onLoginSuccess or onLoginFailed
+        onLoginSuccess();
+
+
     }
-
-
-
 
 
     public void onLoginSuccess() {
@@ -189,5 +179,10 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        valid = false;
+    }
 }
 
