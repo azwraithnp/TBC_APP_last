@@ -65,9 +65,25 @@ public class ClassSchedulesActivity extends Fragment {
         tv42.setText(sp.getString(sub42,""));
         tv51.setText(sp.getString(sub51,""));
         tv52.setText(sp.getString(sub52,""));
+        //https://l4sectionc.firebaseio.com/
 
-        Firebase mRef = new Firebase("https://blazing-heat-4318.firebaseio.com/");
+        sp= getContext().getSharedPreferences("name", MODE_PRIVATE);
+        //String value=(sp.getString("name", "Default_Value"));
+        String user = sp.getString("sec", "default123");
+
+        Firebase mRef = null;
+        if(user.equals("a")){
+             mRef = new Firebase("https://blazing-heat-4318.firebaseio.com/");
+        }
+        if(user.equals("b")){
+             mRef = new Firebase("https://l4sectionb.firebaseio.com/\n");
+        }
+        if(user.equals("c")){
+             mRef = new Firebase("https://l4sectionc.firebaseio.com/\n");
+        }
+
         Firebase scheduleRef11 = mRef.child("sub11");
+
         scheduleRef11.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

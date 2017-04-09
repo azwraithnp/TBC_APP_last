@@ -1,9 +1,11 @@
 package com.example.b50i7d.tbcapp;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 /**
@@ -24,10 +26,10 @@ public class personalActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar)findViewById(R.id.main_toolbar);
         setSupportActionBar(myToolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         sp= getApplicationContext().getSharedPreferences("name", MODE_PRIVATE);
@@ -52,4 +54,21 @@ public class personalActivity extends AppCompatActivity {
         password.setText(pass);
         //Toast.makeText(personalActivity.this, user, Toast.LENGTH_SHORT).show();
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // todo: goto back activity from here
+
+                Intent intent = new Intent(personalActivity.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 }

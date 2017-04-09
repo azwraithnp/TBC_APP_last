@@ -54,6 +54,7 @@ public class MainActivity extends ActionBarActivity {
         setSupportActionBar(myToolbar);
         Intent i = getIntent();
          get = i.getStringExtra("id");
+
         firebaseURL = firebaseURL + i.getStringExtra("id") + "/";
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -79,7 +80,8 @@ public class MainActivity extends ActionBarActivity {
 
         SharedPreferences pref = getApplicationContext().getSharedPreferences("name", MODE_PRIVATE);
         final SharedPreferences.Editor editor = pref.edit();
-
+        editor.putString("id", i.getStringExtra("id"));
+        editor.commit();
 
         Firebase.setAndroidContext(this);
         Firebase ref = new Firebase(firebaseURL);
@@ -96,6 +98,22 @@ public class MainActivity extends ActionBarActivity {
 
             }
         });
+        Firebase sec = ref.child("sec");
+        sec.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String value = dataSnapshot.getValue(String.class);
+                editor.putString("sec", value);
+                editor.commit();
+                Toast.makeText(getApplicationContext(), value, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
         Firebase add = ref.child("address");
         add.addValueEventListener(new ValueEventListener() {
             @Override

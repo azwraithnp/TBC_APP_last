@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -24,15 +25,16 @@ public class AttendanceListActivity extends AppCompatActivity {
 
         Toolbar myToolbar = (Toolbar)findViewById(R.id.main_toolbar);
         setSupportActionBar(myToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-      try{
+
+        try{
           Intent i = getIntent();
           Toast.makeText(AttendanceListActivity.this,i.getStringExtra("id"),Toast.LENGTH_SHORT).show();
           int a = Integer.parseInt(i.getStringExtra("id"));
           if(a<=1111111112){
-              getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-              getSupportActionBar().setHomeButtonEnabled(true);
-              getSupportActionBar().setDisplayShowTitleEnabled(false);
 
               cv1.setOnClickListener(new View.OnClickListener() {
                   @Override
@@ -74,6 +76,22 @@ public class AttendanceListActivity extends AppCompatActivity {
       }catch(Exception e){
             Toast.makeText(AttendanceListActivity.this,"you are not valid user",Toast.LENGTH_SHORT).show();
 
+        }
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // todo: goto back activity from here
+
+                Intent intent = new Intent(AttendanceListActivity.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }

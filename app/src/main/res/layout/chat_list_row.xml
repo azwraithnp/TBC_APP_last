@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:text="user1"
             android:textStyle="italic"
-            android:textColor="#A9A9A9"
+            android:textColor="#fff"
             android:id="@+id/username"
             android:paddingRight="10dp"
             android:paddingLeft="10dp"
