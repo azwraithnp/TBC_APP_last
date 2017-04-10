@@ -11,10 +11,22 @@ public class AttendanceObject {
     private String lname;
     private String email;
     private String id;
+    private String teacher_name;
+    private String section;
+
+
 
     public AttendanceObject()
     {
 
+    }
+
+    public String getSection() {
+        return section;
+    }
+
+    public void setSection(String section) {
+        this.section = section;
     }
 
     public String getDate() {
@@ -51,6 +63,14 @@ public class AttendanceObject {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getTeacher_name() {
+        return teacher_name;
+    }
+
+    public void setTeacher_name(String teacher_name) {
+        this.teacher_name = teacher_name;
     }
 
     public void setEmail(String email) {

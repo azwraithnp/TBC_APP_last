@@ -35,14 +35,15 @@ public class AttendanceActivity extends AppCompatActivity implements AttendanceL
     List<AttendanceObject> list2 = new ArrayList<>();
     TextView txt,date;
     String firebaseURL2;
+    String teacher_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendance);
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         String firebaseURL = intent.getExtras().getString("url");
-        firebaseURL2 = intent.getStringExtra("url2");
+        firebaseURL2 = "https://tbcapp-1470055419551.firebaseio.com/";
         txt = (TextView)findViewById(R.id.textsample);
         date = (TextView) findViewById(R.id.attendance_date);
 
@@ -65,6 +66,39 @@ public class AttendanceActivity extends AppCompatActivity implements AttendanceL
 
         Firebase ref = new Firebase(firebaseURL);
 
+        Firebase ref2 = new Firebase("https://student-details-80045.firebaseio.com/");
+
+        ref2.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                if(dataSnapshot.getKey().equals(intent.getStringExtra("idnum")))
+                {
+                    Student teacher = dataSnapshot.getValue(Student.class);
+                    teacher_name = teacher.getFname() + teacher.getLname();
+                }
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
         Toast.makeText(AttendanceActivity.this, "Loading...", Toast.LENGTH_SHORT).show();
 
         ChildEventListener childEventListener = new ChildEventListener() {
@@ -82,6 +116,8 @@ public class AttendanceActivity extends AppCompatActivity implements AttendanceL
                 attendanceObject.setId(dataSnapshot.getKey());
                 attendanceObject.setAttendance("present");
                 attendanceObject.setDate(sdf.format(new Date()));
+                attendanceObject.setTeacher_name(teacher_name);
+                attendanceObject.setSection(intent.getStringExtra("sec"));
                 list.add(attendanceObject);
                 attendanceAdapter.notifyDataSetChanged();
 
@@ -121,9 +157,9 @@ public class AttendanceActivity extends AppCompatActivity implements AttendanceL
             public void onClick(View view) {
                 Firebase ref2 = new Firebase(firebaseURL2);
 
-                ref2.removeValue();
-
                 Toast.makeText(AttendanceActivity.this, "Pushing", Toast.LENGTH_SHORT).show();
+
+                ref2.removeValue();
 
                 for(int i=0;i<list2.size();i++)
                 {

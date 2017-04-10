@@ -9,12 +9,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+
 /**
  * Created by B50i7D on 4/5/2017.
  */
 
 public class AttendanceListActivity extends AppCompatActivity {
     CardView cv1,cv2,cv3;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,20 +37,26 @@ public class AttendanceListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
 
+        Firebase.setAndroidContext(AttendanceListActivity.this);
+
+
+
         try{
           Intent i = getIntent();
           Toast.makeText(AttendanceListActivity.this,i.getStringExtra("id"),Toast.LENGTH_SHORT).show();
-          int a = Integer.parseInt(i.getStringExtra("id"));
+          final int a = Integer.parseInt(i.getStringExtra("id"));
           if(a<=14321432){
+
+
 
               cv1.setOnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {
-                      String url = "https://student-details-80045.firebaseio.com/";
-                      String url2 = "https://tbcapp-1470055419551.firebaseio.com/";
+                      String url = "https://theta-cable-138914.firebaseio.com/";
                       Intent i = new Intent(AttendanceListActivity.this,AttendanceActivity.class);
                       i.putExtra("url",url);
-                      i.putExtra("url2", url2);
+                      i.putExtra("sec", "a");
+                      i.putExtra("idnum", "" + a);
                       startActivity(i);
                   }
               });
@@ -51,10 +64,9 @@ public class AttendanceListActivity extends AppCompatActivity {
                   @Override
                   public void onClick(View v) {
                       String url = "https://alish.firebaseio.com/";
-                      String url2 = "https://theta-cable-138914.firebaseio.com/";
                       Intent i = new Intent(AttendanceListActivity.this,AttendanceActivity.class);
                       i.putExtra("url",url);
-                      i.putExtra("url2", url2);
+                      i.putExtra("sec", "b");
                       startActivity(i);
                   }
               });
@@ -62,10 +74,9 @@ public class AttendanceListActivity extends AppCompatActivity {
                   @Override
                   public void onClick(View v) {
                       String url = "https://tbcchat.firebaseio.com/";
-                      String url2 = "https://api-project-1-1139.firebaseio.com/";
                       Intent i = new Intent(AttendanceListActivity.this,AttendanceActivity.class);
                       i.putExtra("url",url);
-                      i.putExtra("url2", url2);
+                      i.putExtra("sec", "c");
                       startActivity(i);
                   }
               });
