@@ -151,7 +151,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
 
-        if(id.isEmpty() || id.length() < 10)
+        if(id.isEmpty() || id.length() < 8)
         {
             emailText.setError("Enter a valid TBC ID number!");
             valid = false;

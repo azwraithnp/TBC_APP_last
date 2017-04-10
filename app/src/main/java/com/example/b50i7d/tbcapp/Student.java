@@ -6,14 +6,20 @@ package com.example.b50i7d.tbcapp;
 
 public class Student {
 
-    private String address, dob, email, fname, lname, password;
+    private String address, dob, email, fname, lname, password,sec;
     private long cell;
 
     public Student()
     {
 
     }
+    public String getSec() {
+        return sec;
+    }
 
+    public void setSec(String sec) {
+        this.sec = sec;
+    }
     public String getAddress() {
         return address;
     }

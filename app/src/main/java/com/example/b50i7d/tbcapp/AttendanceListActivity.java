@@ -34,7 +34,7 @@ public class AttendanceListActivity extends AppCompatActivity {
           Intent i = getIntent();
           Toast.makeText(AttendanceListActivity.this,i.getStringExtra("id"),Toast.LENGTH_SHORT).show();
           int a = Integer.parseInt(i.getStringExtra("id"));
-          if(a<=1111111112){
+          if(a<=14321432){
 
               cv1.setOnClickListener(new View.OnClickListener() {
                   @Override
