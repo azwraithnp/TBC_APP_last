@@ -9,10 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.firebase.client.ChildEventListener;
-import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
 
 /**
  * Created by B50i7D on 4/5/2017.
@@ -46,9 +43,6 @@ public class AttendanceListActivity extends AppCompatActivity {
           Toast.makeText(AttendanceListActivity.this,i.getStringExtra("id"),Toast.LENGTH_SHORT).show();
           final int a = Integer.parseInt(i.getStringExtra("id"));
           if(a<=14321432){
-
-
-
               cv1.setOnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {
