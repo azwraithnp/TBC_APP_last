@@ -230,9 +230,10 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onMenuTabSelected(@IdRes int menuItemId) {
                 if (menuItemId == R.id.Bottombaritemone) {
-
+                    HomeActivity f = new HomeActivity();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
                     myToolbar.setBackgroundColor(Color.parseColor("#2980b9"));
-                                    }
+                }
                 if (menuItemId == R.id.Bottombaritemtwo) {
                     ChatActivity f = new ChatActivity();
                     myToolbar.setBackgroundColor(Color.parseColor("#3498db"));

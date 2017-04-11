@@ -30,7 +30,7 @@ public class HomeActivity extends Fragment {
         }
         else {
             //Toast.makeText(getContext(), "connected", Toast.LENGTH_SHORT).show();
-            v = inflater.inflate(R.layout.fragment_settings, container, false);
+            v = inflater.inflate(R.layout.activity_home, container, false);
             WebView view = (WebView) v.findViewById(R.id.webview1);
             view.getSettings().setJavaScriptEnabled(true);
             view.loadUrl(url);
