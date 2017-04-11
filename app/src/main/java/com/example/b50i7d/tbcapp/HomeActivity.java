@@ -73,7 +73,6 @@ public class HomeActivity extends Fragment {
 
             }
         });
-
         return builder;
     }
     @Override
