@@ -18,10 +18,8 @@ import android.webkit.WebViewClient;
  * Created by B50i7D on 11/29/2016.
  */
 public class HomeActivity extends Fragment {
-
     @Nullable
     @Override
-
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v;
         String url = "https://ebookzweb.wordpress.com/";
@@ -38,7 +36,6 @@ public class HomeActivity extends Fragment {
             view.loadUrl(url);
             view.setWebViewClient(new WebViewClient());
             view.getSettings().setJavaScriptEnabled(true);
-
         }
 
         return v;
@@ -88,6 +85,4 @@ public class HomeActivity extends Fragment {
         if (getActivity().getSupportFragmentManager().findFragmentByTag("MyFragment") != null)
             getActivity().getSupportFragmentManager().findFragmentByTag("MyFragment").getRetainInstance();
     }
-
 }
-
