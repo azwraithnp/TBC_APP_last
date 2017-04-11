@@ -76,10 +76,10 @@ public class ClassSchedulesActivity extends Fragment {
              mRef = new Firebase("https://blazing-heat-4318.firebaseio.com/");
         }
         if(user.equals("b")){
-             mRef = new Firebase("https://l4sectionb.firebaseio.com/\n");
+             mRef = new Firebase("https://l4sectionb.firebaseio.com/");
         }
         if(user.equals("c")){
-             mRef = new Firebase("https://l4sectionc.firebaseio.com/\n");
+             mRef = new Firebase("https://l4sectionc.firebaseio.com/");
         }
 
         Firebase scheduleRef11 = mRef.child("sub11");
