@@ -94,24 +94,6 @@ public class ChatActivity extends Fragment {
         sendButton = (Button)v.findViewById(R.id.sendButton);
         imgB = (Button) v.findViewById(R.id.imageButton);
 
-        imgB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_PICK,
-                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent, 0);
-            }
-        });
-
-        recycleView = (RecyclerView)v.findViewById(R.id.recycler_view);
-        cAdapter = new ChatAdapter(list, getContext());
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
-        recycleView.setLayoutManager(mLayoutManager);
-        recycleView.setItemAnimator(new DefaultItemAnimator());
-        recycleView.setAdapter(cAdapter);
-
-
-
         ref.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -146,6 +128,26 @@ public class ChatActivity extends Fragment {
 
             }
         });
+
+
+
+        imgB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, 0);
+            }
+        });
+
+        recycleView = (RecyclerView)v.findViewById(R.id.recycler_view);
+        cAdapter = new ChatAdapter(list, getContext());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+        recycleView.setLayoutManager(mLayoutManager);
+        recycleView.setItemAnimator(new DefaultItemAnimator());
+        recycleView.setAdapter(cAdapter);
+
+
 
 
         final Firebase finalRef = ref;
