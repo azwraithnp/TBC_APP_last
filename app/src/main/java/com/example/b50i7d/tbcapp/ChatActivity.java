@@ -156,6 +156,8 @@ public class ChatActivity extends Fragment {
                 String message = messageBox.getText().toString();
                 try{
                     ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
+                    int nh = (int) ( bitmap.getHeight() * (512.0 / bitmap.getWidth()) );
+                    bitmap = Bitmap.createScaledBitmap(bitmap, 512, nh, true);
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bYtE);
                     bitmap.recycle();
                     byte[] byteArray = bYtE.toByteArray();

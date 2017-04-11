@@ -230,10 +230,9 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onMenuTabSelected(@IdRes int menuItemId) {
                 if (menuItemId == R.id.Bottombaritemone) {
-                    SettingActivity f = new SettingActivity();
+
                     myToolbar.setBackgroundColor(Color.parseColor("#2980b9"));
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
-                }
+                                    }
                 if (menuItemId == R.id.Bottombaritemtwo) {
                     ChatActivity f = new ChatActivity();
                     myToolbar.setBackgroundColor(Color.parseColor("#3498db"));
@@ -343,8 +342,13 @@ public class MainActivity extends ActionBarActivity {
                     startActivity(new Intent(MainActivity.this, AboutActivity.class));
                     break;
                 case 5:
-                    Toast.makeText(MainActivity.this,"comming soon",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,"Coming soon...",Toast.LENGTH_SHORT).show();
                     break;
+                case 6:
+                   startActivity(new Intent(MainActivity.this, SettingActivity.class));
+                    break;
+
+
             }
             setTitle(mPanelTitles[position]);
         }

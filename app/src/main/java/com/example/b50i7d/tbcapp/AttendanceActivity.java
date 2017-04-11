@@ -159,8 +159,6 @@ public class AttendanceActivity extends AppCompatActivity implements AttendanceL
 
                 Toast.makeText(AttendanceActivity.this, "Pushing", Toast.LENGTH_SHORT).show();
 
-                ref2.removeValue();
-
                 for(int i=0;i<list2.size();i++)
                 {
                     ref2.push().setValue(list2.get(i));

@@ -1,28 +1,35 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.b50i7d.tbcapp.NotesFragmet$SettingsFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        android:orientation="vertical"
-        >
-
-        <WebView
-            android:id="@+id/webview1"
-            android:layout_height="661dp"
-            android:layout_width="match_parent"
-            android:scrollbars="none"
-            xmlns:android="http://schemas.android.com/apk/res/android">
-        </WebView>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="97dp"
-            android:text="jgjhgjhg"
-            />
-    </LinearLayout>
-</FrameLayout>
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+    <Button
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:background="@android:color/holo_red_light"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/deleteatt"
+        android:padding="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete attendance data"/>
+    <Button
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/holo_red_light"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/deleteatt"
+        android:id="@+id/deletechat"
+        android:padding="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete chat data"/>
+    </RelativeLayout>
+</LinearLayout>
