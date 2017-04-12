@@ -28,7 +28,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder>{
     private Context mContext;
     SharedPreferences sp;
     SharedPreferences.Editor editor;
-    public static final String user_name = "user_name";
+    public final String user_name = "user_name";
     LinearLayout mLayout;
     Bitmap bitmap;
 
@@ -89,14 +89,17 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder>{
         holder.username.setText(chat.getUsername());
         holder.message.setText(chat.getMessage());
         holder.date.setText(chat.getDate());
-        try{
-            InputStream stream = new ByteArrayInputStream(Base64.decode(chat.getImg().getBytes(), Base64.DEFAULT));
-            bitmap = BitmapFactory.decodeStream(stream);
-            holder.imgV.setImageBitmap(bitmap);
-        }catch(Exception e) {
 
+        if(chat.getImg() != null) {
+            try {
+                InputStream stream = new ByteArrayInputStream(Base64.decode(chat.getImg().getBytes(), Base64.DEFAULT));
+                bitmap = BitmapFactory.decodeStream(stream);
+                holder.imgV.setImageBitmap(bitmap);
+
+            } catch (Exception e) {
+
+            }
         }
-
     }
 
     @Override
@@ -104,4 +107,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder>{
         return chatMessages.size();
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
 }

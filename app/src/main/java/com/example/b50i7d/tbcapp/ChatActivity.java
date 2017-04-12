@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -101,10 +102,7 @@ public class ChatActivity extends Fragment {
                 list.add(chatMessage);
                 count = list.size();
                 cAdapter.notifyDataSetChanged();
-                if(!(list.size() == 0))
-                {
-                    recycleView.scrollToPosition(list.size() - 1);
-                }
+                Toast.makeText(getContext(), "" + list.size(), Toast.LENGTH_SHORT).show();
 
             }
 
@@ -137,6 +135,7 @@ public class ChatActivity extends Fragment {
                 Intent intent = new Intent(Intent.ACTION_PICK,
                         android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intent, 0);
+                //Toast.makeText(getActivity(), "Coming soon", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -168,7 +167,9 @@ public class ChatActivity extends Fragment {
 
                 }
                 ChatMessage chatMessage = new ChatMessage();
-                chatMessage.setImg(imageFile);
+                if(imageFile != null) {
+                    chatMessage.setImg(imageFile);
+                }
                 chatMessage.setUsername(user);
                 chatMessage.setMessage(message);
                 chatMessage.setCourses(course);
